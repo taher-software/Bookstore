@@ -1,12 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const BooksList = () => {
-  const books = [];
+  const books = useSelector((state) => state.booksReducer);
   return (
     <ul>
       {books.map((book) => (
         <li key={book.id}>
-          {book.title}
+          <h2>{book.title}</h2>
+          <p>{book.author}</p>
           <button type="submit">Remove</button>
         </li>
       ))}
