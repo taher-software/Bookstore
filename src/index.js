@@ -22,7 +22,7 @@ ReactDOM.render(
           <li><Link to="/CATEGORIES">CATEGORIES </Link></li>
         </ul>
         <div>
-          <img src={USER} alt="user_photo" />
+          <img src={USER} alt="user_photo" style={{ width: '1.06rem' }} />
         </div>
       </nav>
       <Switch>
