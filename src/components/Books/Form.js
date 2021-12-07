@@ -9,7 +9,6 @@ const AddBook = () => {
     e.preventDefault();
     const id = uuidv4();
     const title = e.target.parentNode.querySelector('input').value;
-    console.log(title);
     const authors = ['Suzanne Collins', 'Frank Herbert'];
     const newBook = {
       id,
