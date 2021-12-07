@@ -6,12 +6,14 @@ import {
   Switch,
   Link,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Books from './components/Books';
 import Category from './components/Categories';
 import USER from './assets/images/user.png';
+import store from './redux/configureStore';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <Router>
       <nav>
         <h1>Bookstore CMS</h1>
@@ -20,7 +22,7 @@ ReactDOM.render(
           <li><Link to="/CATEGORIES">CATEGORIES </Link></li>
         </ul>
         <div>
-          <img src={USER} alt="user_photo" />
+          <img src={USER} alt="user_photo" style={{ width: '1.06rem' }} />
         </div>
       </nav>
       <Switch>
@@ -28,6 +30,6 @@ ReactDOM.render(
         <Route path="/CATEGORIES"><Category /></Route>
       </Switch>
     </Router>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root'),
 );
