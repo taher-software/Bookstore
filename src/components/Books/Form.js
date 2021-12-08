@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../../redux/books/books';
+import { addNewBook } from '../../redux/books/books';
 
 const AddBook = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const AddBook = () => {
       title,
       author: authors[Math.floor(Math.random() * 2)],
     };
-    dispatch(addBook(newBook));
+    dispatch(addNewBook(newBook));
   };
   return (
     <form>
