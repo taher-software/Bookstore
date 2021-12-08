@@ -65,7 +65,7 @@ export const addNewBook = (payload) => {
       dispatch(addBook(payload));
     })
     .catch(err =>{
-      dispatch(addBookFailed(err.message));
+      dispatch(manageBookFailed(err.message));
     })
 
   }
@@ -79,20 +79,49 @@ export const removeExistBook = (id) => {
       dispatch(removeBook);
     })
     .catch(err => {
-
+      dispatch(manageBookFailed(err.message));
     })
   }
 }
 
-const booksReducer = (state = [], action) => {
+const consumeApi = async() => {
+  return await (async() => {
+    const url = urlApi + '/apps/' + appIdentifier +'/books';
+    const resp = await fetch(url);
+    return resp.json();
+  });
+}
+const initialState = {
+  books: consumeApi()
+}
+const booksReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_BOOK:
-      return [
+    case STARTED_BOOK:
+      return {
         ...state,
-        action.payload,
-      ];
+        loading: true,
+      }
+    case ADD_BOOK:
+      return {
+        ...state,
+        books: state.books.concat(action.payload),
+        error: null,
+        loading: false
+      }
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.payload);
+      return {
+        ...state,
+        books: state.books.filter(book => book.id !== action.payload),
+        error: null,
+        loading: false
+      }
+    case MANAGE_BOOK_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+        loading: false
+      }
+  
     default:
       return state;
   }
