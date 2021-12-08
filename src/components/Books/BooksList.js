@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeExistBook } from '../../redux/books/books';
 
 const BooksList = () => {
-  const books = useSelector((state) => state.books);
+  const books = useSelector((state) => state.booksReducer.books);
   const dispatch = useDispatch();
   const handleRemove = (id) => {
     dispatch(removeExistBook(id));
