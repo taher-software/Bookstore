@@ -1,7 +1,7 @@
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 const STARTED_BOOK = 'bookStore/books/STARTED_BOOK';
-const ADD_BOOK_FAILURE = 'bookStore/books/ADD_BOOK_FAILURE';
+const MANAGE_BOOK_FAILURE = 'bookStore/books/ADD_BOOK_FAILURE';
 
 const appIdentifier = 'oFzStVgFLC3mbAjB7OrJ';
 const urlApi = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
@@ -20,8 +20,8 @@ const manageBookStarted = () =>({
   type: STARTED_BOOK,
 })
 
-const addBookFailed = error =>({
-  type: ADD_BOOK_FAILURE,
+const manageBookFailed = error =>({
+  type: MANAGE_BOOK_FAILURE,
   payload: {
     error
   }
@@ -35,11 +35,28 @@ const addBookToApi = (data)=> {
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        item_id: data.id,
+        title: data.title,
+        category: "Fiction"
+      }),
     }
   );
 }
 
+const deleteBookFromApi = (id) => {
+  const url = urlApi + '/apps/' + appIdentifier + '/books/' + id;
+  return fetch(
+    url,
+    {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({item_id: id})
+    }
+  );
+}
 export const addNewBook = (payload) => {
   return dispatch => {
     dispatch(manageBookStarted());
@@ -51,6 +68,19 @@ export const addNewBook = (payload) => {
       dispatch(addBookFailed(err.message));
     })
 
+  }
+}
+
+export const removeExistBook = (id) => {
+  return dispatch => {
+    dispatch(manageBookStarted());
+    deleteBookFromApi(id)
+    .then(res => {
+      dispatch(removeBook);
+    })
+    .catch(err => {
+
+    })
   }
 }
 
