@@ -7,6 +7,6 @@ const reducer = combineReducers({ booksReducer });
 const store = createStore(
   reducer,
   applyMiddleware(logger),
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 );
 export default store;

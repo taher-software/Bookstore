@@ -16,18 +16,18 @@ const removeBook = (payload) => ({
   payload,
 });
 
-const manageBookStarted = () =>({
+const manageBookStarted = () => ({
   type: STARTED_BOOK,
-})
+});
 
-const manageBookFailed = error =>({
+const manageBookFailed = (error) => ({
   type: MANAGE_BOOK_FAILURE,
   payload: {
-    error
-  }
-})
-const addBookToApi = (data)=> {
-  const url = urlApi + '/apps/' + appIdentifier + '/books';
+    error,
+  },
+});
+const addBookToApi = (data) => {
+  const url = `${urlApi}/apps/${appIdentifier}/books`;
   return fetch(
     url,
     {
@@ -38,14 +38,14 @@ const addBookToApi = (data)=> {
       body: JSON.stringify({
         item_id: data.id,
         title: data.title,
-        category: "Fiction"
+        category: 'Fiction',
       }),
-    }
+    },
   );
-}
+};
 
 const deleteBookFromApi = (id) => {
-  const url = urlApi + '/apps/' + appIdentifier + '/books/' + id;
+  const url = `${urlApi}/apps/${appIdentifier}/books/${id}`;
   return fetch(
     url,
     {
@@ -53,75 +53,71 @@ const deleteBookFromApi = (id) => {
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({item_id: id})
-    }
+      body: JSON.stringify({ item_id: id }),
+    },
   );
-}
-export const addNewBook = (payload) => {
-  return dispatch => {
-    dispatch(manageBookStarted());
-    addBookToApi(payload)
-    .then(res => {
+};
+export const addNewBook = (payload) => (dispatch) => {
+  dispatch(manageBookStarted());
+  addBookToApi(payload)
+    .then(() => {
       dispatch(addBook(payload));
     })
-    .catch(err =>{
+    .catch((err) => {
       dispatch(manageBookFailed(err.message));
-    })
+    });
+};
 
-  }
-}
-
-export const removeExistBook = (id) => {
-  return dispatch => {
-    dispatch(manageBookStarted());
-    deleteBookFromApi(id)
-    .then(res => {
-      dispatch(removeBook);
+export const removeExistBook = (id) => (dispatch) => {
+  dispatch(manageBookStarted());
+  deleteBookFromApi(id)
+    .then(() => {
+      dispatch(removeBook(id));
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch(manageBookFailed(err.message));
-    })
-  }
-}
+    });
+};
 
-const consumeApi = async() => {
-  return await (async() => {
-    const url = urlApi + '/apps/' + appIdentifier +'/books';
-    const resp = await fetch(url);
-    return resp.json();
+const consumeApi = async () => {
+  const res = await (async () => {
+    const url = `${urlApi}/apps/${appIdentifier}/books`;
+    const data = await (fetch(url));
+    return data.json();
   });
-}
+  return res;
+};
 const initialState = {
-  books: consumeApi()
-}
+  books: consumeApi(),
+};
 const booksReducer = (state = initialState, action) => {
   switch (action.type) {
     case STARTED_BOOK:
       return {
         ...state,
         loading: true,
-      }
+      };
     case ADD_BOOK:
       return {
         ...state,
         books: state.books.concat(action.payload),
         error: null,
-        loading: false
-      }
+        loading: false,
+      };
     case REMOVE_BOOK:
       return {
         ...state,
-        books: state.books.filter(book => book.id !== action.payload),
+        books: state.books.filter((book) => book.id !== action.payload),
         error: null,
-        loading: false
-      }
+        loading: false,
+      };
     case MANAGE_BOOK_FAILURE:
       return {
         ...state,
         error: action.payload.error,
-        loading: false
-      }
-  
+        loading: false,
+      };
+
     default:
       return state;
   }
