@@ -7,28 +7,34 @@ const AddBook = () => {
   const dispatch = useDispatch();
   const submitBookToStore = (e) => {
     e.preventDefault();
-    const id = uuidv4();
-    const title = e.target.parentNode.querySelector('input').value;
     const authors = ['Suzanne Collins', 'Frank Herbert'];
+    const id = uuidv4();
+    let target = e.target.parentNode;
+    if (e.target.className === 'btn-title') target = e.target.parentNode.parentNode;
+    const title = target.querySelector('input').value;
+    target.querySelector('input').value = '';
+    const category = target.querySelector('select').value;
+    target.querySelector('select').value = '';
     const newBook = {
       id,
       title,
       author: authors[Math.floor(Math.random() * 2)],
+      category,
     };
     dispatch(addNewBook(newBook));
   };
   return (
-    <form>
-      <h2>ADD NEW BOOK</h2>
-      <div>
-        <input type="text" placeholder="Book title" />
-        <select defaultValue="Category">
-          <option disabled selected>Category</option>
+    <form className="form">
+      <h2 className="form-title">ADD NEW BOOK</h2>
+      <div className="form-icone">
+        <input className="input-book" type="text" placeholder="Book title" />
+        <select className="category-input">
+          <option disabled selected hidden>Category</option>
           <option>Economy</option>
           <option>Action</option>
           <option>Science fiction</option>
         </select>
-        <button type="submit" onClick={(e) => submitBookToStore(e)}>ADD BOOK</button>
+        <button className="btn-book" type="submit" onClick={(e) => submitBookToStore(e)}><i className="btn-title">ADD BOOK</i></button>
       </div>
     </form>
   );

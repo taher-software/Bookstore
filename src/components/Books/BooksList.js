@@ -9,15 +9,26 @@ const BooksList = () => {
     dispatch(removeExistBook(id));
   };
   useEffect(() => dispatch(loadAndDisplayBooks()), []);
+  let i = 0;
   return (
-    <ul>
+    <ul className="books" style={{ gridTemplateRows: `repeat(${books.length},1fr)` }}>
       {books.map((book) => {
-        const { id, title, author } = book;
+        const {
+          id, title, author, category,
+        } = book;
+        i += 1;
         return (
-          <li key={id}>
-            <h2>{title}</h2>
-            <p>{author}</p>
-            <button type="submit" onClick={() => handleRemove(id)}>Remove</button>
+          <li key={id} className="book-card" style={{ gridRow: `${i}/span 1` }}>
+            <div className="book-inf">
+              <p className="category">{category}</p>
+              <h2>{title}</h2>
+              <p className="author">{author}</p>
+              <div className="user-btns">
+                <button className="edit-button" type="submit">Comments</button>
+                <button className="edit-button" type="submit" onClick={() => handleRemove(id)}>Remove</button>
+                <button className="edit-button" type="submit">Edit</button>
+              </div>
+            </div>
           </li>
         );
       })}
