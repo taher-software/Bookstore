@@ -26,6 +26,7 @@ const manageBookFailed = (error) => ({
     error,
   },
 });
+
 const addBookToApi = (data) => {
   const url = `${urlApi}/apps/${appIdentifier}/books`;
   return fetch(
@@ -79,18 +80,7 @@ export const removeExistBook = (id) => (dispatch) => {
     });
 };
 
-const consumeApi = async () => {
-  const res = await (async () => {
-    const url = `${urlApi}/apps/${appIdentifier}/books`;
-    const data = await (fetch(url));
-    return data.json();
-  });
-  return res;
-};
-const initialState = {
-  books: consumeApi(),
-};
-const booksReducer = (state = initialState, action) => {
+const booksReducer = (state = { books: [] }, action) => {
   switch (action.type) {
     case STARTED_BOOK:
       return {
@@ -117,7 +107,6 @@ const booksReducer = (state = initialState, action) => {
         error: action.payload.error,
         loading: false,
       };
-
     default:
       return state;
   }
