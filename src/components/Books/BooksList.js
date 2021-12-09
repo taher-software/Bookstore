@@ -1,13 +1,14 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeBook } from '../../redux/books/books';
+import { removeExistBook, loadAndDisplayBooks } from '../../redux/books/books';
 
 const BooksList = () => {
-  const books = useSelector((state) => state.booksReducer);
+  const books = useSelector((state) => state.booksReducer.books);
   const dispatch = useDispatch();
   const handleRemove = (id) => {
-    dispatch(removeBook(id));
+    dispatch(removeExistBook(id));
   };
+  useEffect(() => dispatch(loadAndDisplayBooks()), []);
   return (
     <ul>
       {books.map((book) => {
