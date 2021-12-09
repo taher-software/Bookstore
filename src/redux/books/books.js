@@ -2,6 +2,7 @@ const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 const STARTED_BOOK = 'bookStore/books/STARTED_BOOK';
 const MANAGE_BOOK_FAILURE = 'bookStore/books/ADD_BOOK_FAILURE';
+const DISPLAY_BOOK = 'bookStore/books/DISPLAY_BOOK';
 
 const appIdentifier = 'oFzStVgFLC3mbAjB7OrJ';
 const urlApi = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
@@ -25,6 +26,11 @@ const manageBookFailed = (error) => ({
   payload: {
     error,
   },
+});
+
+const displayBook = (payload) => ({
+  type: DISPLAY_BOOK,
+  payload,
 });
 
 const addBookToApi = (data) => {
@@ -58,6 +64,24 @@ const deleteBookFromApi = (id) => {
     },
   );
 };
+const consumeApi = () => {
+  const url = `${urlApi}/apps/${appIdentifier}/books`;
+  return (fetch(url));
+};
+
+const processingData = (data) => {
+  const books = [];
+  const authors = ['Suzanne Collins', 'Frank Herbert'];
+  Array.from(Object.keys(data)).forEach((item) => {
+    const newBook = {};
+    const bookInf = data[item][0];
+    newBook.id = item;
+    newBook.title = bookInf.title;
+    newBook.author = authors[Math.floor(Math.random() * 2)];
+    books.push(newBook);
+  });
+  return books;
+};
 export const addNewBook = (payload) => (dispatch) => {
   dispatch(manageBookStarted());
   addBookToApi(payload)
@@ -78,6 +102,14 @@ export const removeExistBook = (id) => (dispatch) => {
     .catch((err) => {
       dispatch(manageBookFailed(err.message));
     });
+};
+
+export const loadAndDisplayBooks = () => (dispatch) => {
+  dispatch(manageBookStarted());
+  consumeApi()
+    .then((res) => res.json())
+    .then((result) => dispatch(displayBook(processingData(result))))
+    .catch((err) => dispatch(MANAGE_BOOK_FAILURE(err.message)));
 };
 
 const booksReducer = (state = { books: [] }, action) => {
@@ -105,6 +137,13 @@ const booksReducer = (state = { books: [] }, action) => {
       return {
         ...state,
         error: action.payload.error,
+        loading: false,
+      };
+    case DISPLAY_BOOK:
+      return {
+        ...state,
+        books: action.payload,
+        error: null,
         loading: false,
       };
     default:

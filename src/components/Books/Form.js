@@ -23,6 +23,7 @@ const AddBook = () => {
       <div>
         <input type="text" placeholder="Book title" />
         <select defaultValue="Category">
+          <option disabled selected>Category</option>
           <option>Economy</option>
           <option>Action</option>
           <option>Science fiction</option>

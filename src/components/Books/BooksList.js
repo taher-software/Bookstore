@@ -1,6 +1,6 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeExistBook } from '../../redux/books/books';
+import { removeExistBook, loadAndDisplayBooks } from '../../redux/books/books';
 
 const BooksList = () => {
   const books = useSelector((state) => state.booksReducer.books);
@@ -8,6 +8,7 @@ const BooksList = () => {
   const handleRemove = (id) => {
     dispatch(removeExistBook(id));
   };
+  useEffect(() => dispatch(loadAndDisplayBooks()), []);
   return (
     <ul>
       {books.map((book) => {
