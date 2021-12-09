@@ -11,7 +11,7 @@ body {
   display: flex;
   height: 5.938rem;
   align-items: center;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-link {
@@ -29,7 +29,7 @@ body {
   justify-content: space-between;
 }
 
-.nav-link ul li a{
+.nav-link ul li a {
   text-decoration: none;
   font-size: 0.742rem;
   letter-spacing: 1.735px;
@@ -42,7 +42,8 @@ body {
   color: #0290ff;
   width: 13.7025rem;
 }
-.user-photo{
+
+.user-photo {
   width: 2.569rem;
   height: 2.569rem;
   border: 1px solid #e8e8e8;
@@ -50,6 +51,7 @@ body {
   margin-left: 37.9rem;
   margin-right: 5.65rem;
 }
+
 .user-photo img {
   width: 0.971rem;
   margin: 0.8rem;
@@ -61,6 +63,7 @@ body {
 }
 
 .books-data ul { padding: 0; }
+
 .book-card {
   display: flex;
   list-style: none;
@@ -80,7 +83,7 @@ body {
   height: 1.125rem;
   margin: 0 2.225rem 0 0;
   opacity: 0.5;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 0.875rem;
   font-weight: bold;
   color: #121212;
@@ -89,27 +92,28 @@ body {
 .author {
   height: 1.188rem;
   margin: 0.25rem 0.8rem 0 0;
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
   color: #4386bf;
 }
-.book-inf h2{
+
+.book-inf h2 {
   height: 1.813rem;
   margin: 0.188rem 18.43rem 0 0;
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, sans-serif;
   font-size: 1.375rem;
   font-weight: bold;
   letter-spacing: -0.2px;
   color: #121212;
 }
-.user-btns { margin-top: 1.313rem;}
+.user-btns { margin-top: 1.313rem; }
 
 .edit-button {
   width: 4.166rem;
   height: 1.188rem;
   margin: 0.188rem 0.85rem 0.125rem 0;
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
   color: #4386bf;
@@ -125,8 +129,8 @@ body {
   grid-row-gap: 0.938rem;
 }
 
-hr{
-  background-color:  #e8e8e8;
+hr {
+  background-color: #e8e8e8;
   color: #e8e8e8;
   width: 68.475rem;
   margin: 2.5rem 5.7rem 1.813rem 5.7rem;
@@ -141,7 +145,7 @@ hr{
   width: 9.92rem;
   height: 1.5rem;
   margin: 1.813rem 29.9rem 1.188rem 0;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
   letter-spacing: -0.18px;
@@ -158,7 +162,8 @@ hr{
   width: 55.3%;
   height: 2.813rem;
   margin: 1.188rem 1.415% 0 0;
-  /*padding: 0.813rem 32.58rem 0.813rem 0.97rem;*/
+
+  /* padding: 0.813rem 32.58rem 0.813rem 0.97rem; */
   border-radius: 4px;
   border: solid 1px #e8e8e8;
   background-color: #fff;
@@ -167,7 +172,7 @@ hr{
 .input-book::placeholder {
   width: 4.33rem;
   height: 1.188rem;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 1rem;
   letter-spacing: -0.15px;
   color: #c4c4c4;
@@ -177,7 +182,6 @@ hr{
   width: 23.75%;
   height: 2.813rem;
   margin: 1.188rem 1.415% 0;
-  /*padding: 0.813rem 0.856rem 0.813rem 0.913rem;*/
   border-radius: 4px;
   border: solid 1px #e8e8e8;
   background-color: #fff;
@@ -187,16 +191,15 @@ hr{
   width: 15.33%;
   height: 2.813rem;
   margin: 1.188rem 0 0 1.415%;
-  /*padding: 0.801rem 1.084rem 0.886rem 1.255rem;*/
   border-radius: 3px;
   background-color: #0290ff;
   border: none;
 }
 
-i{
-  width: 8.160rem;
+i {
+  width: 8.16rem;
   height: 1.125rem;
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, sans-serif;
   font-size: 0.813rem;
   font-weight: bold;
   letter-spacing: 0.5px;
@@ -221,5 +224,4 @@ i{
 
 .construction-message p {
   color: rgb(81, 82, 86);
-
 }
