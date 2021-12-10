@@ -45,7 +45,7 @@ const addBookToApi = (data) => {
       body: JSON.stringify({
         item_id: data.id,
         title: data.title,
-        category: 'Fiction',
+        category: data.category,
       }),
     },
   );
@@ -78,6 +78,7 @@ const processingData = (data) => {
     newBook.id = item;
     newBook.title = bookInf.title;
     newBook.author = authors[Math.floor(Math.random() * 2)];
+    newBook.category = bookInf.category;
     books.push(newBook);
   });
   return books;
@@ -109,7 +110,7 @@ export const loadAndDisplayBooks = () => (dispatch) => {
   consumeApi()
     .then((res) => res.json())
     .then((result) => dispatch(displayBook(processingData(result))))
-    .catch((err) => dispatch(MANAGE_BOOK_FAILURE(err.message)));
+    .catch((err) => dispatch(manageBookFailed(err.message)));
 };
 
 const booksReducer = (state = { books: [] }, action) => {

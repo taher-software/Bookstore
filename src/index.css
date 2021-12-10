@@ -1,3 +1,329 @@
 * {
   margin: 0;
 }
+
+body {
+  background-color: #fafafa;
+}
+
+.header {
+  background-color: #fff;
+  display: flex;
+  height: 5.938rem;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5.7rem;
+  width: 28.09rem;
+  align-items: center;
+}
+
+.nav-link ul {
+  display: flex;
+  list-style: none;
+  width: 11.7rem;
+  justify-content: space-between;
+}
+
+.nav-link ul li a {
+  text-decoration: none;
+  font-size: 0.742rem;
+  letter-spacing: 1.735px;
+  color: #121212;
+}
+
+.nav-link h1 {
+  font-size: 1.712rem;
+  font-weight: bold;
+  color: #0290ff;
+  width: 13.7025rem;
+}
+
+.user-photo {
+  width: 2.569rem;
+  height: 2.569rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 50%;
+  margin-left: 37.9rem;
+  margin-right: 5.65rem;
+}
+
+.user-photo img {
+  width: 0.971rem;
+  margin: 0.8rem;
+}
+
+.books-data {
+  margin-top: 2.313rem;
+  padding-bottom: 16.563rem;
+}
+
+.books-data ul { padding: 0; }
+
+.book-card {
+  display: flex;
+  list-style: none;
+  background-color: #fff;
+  margin-left: 5.7rem;
+  width: 68.475rem;
+  height: 10.625rem;
+  align-items: center;
+}
+
+.book-inf {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 9rem 1.75rem 1.54rem;
+  width: 19rem;
+}
+
+.category {
+  height: 1.125rem;
+  margin: 0 0 0 0;
+  opacity: 0.5;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #121212;
+}
+
+.author {
+  height: 1.188rem;
+  margin: 0.25rem 0 0 0;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+}
+
+.book-inf h2 {
+  height: 1.813rem;
+  margin: 0.188rem  0 0 0;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 1.375rem;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  color: #121212;
+}
+.user-btns { margin-top: 1.313rem; }
+
+.edit-button {
+  height: 1.188rem;
+  margin: 0.188rem 0.85rem 0.125rem 0;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  text-align: start;
+  cursor: pointer;
+}
+
+.books {
+  display: grid;
+  grid-row-gap: 0.938rem;
+}
+
+hr {
+  background-color: #e8e8e8;
+  color: #e8e8e8;
+  width: 68.475rem;
+  margin: 2.5rem 5.7rem 1.813rem 5.7rem;
+}
+
+.form {
+  margin: 1.813rem 5.7rem 0 5.7rem;
+  width: 68.475rem;
+}
+
+.form-title {
+  height: 1.5rem;
+  margin: 1.813rem 29.9rem 1.188rem 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: -0.18px;
+  color: #888;
+}
+
+.form-icone {
+  width: 100%;
+  display: flex;
+  height: 2.813rem;
+}
+
+.input-book {
+  width: 55.3%;
+  height: 2.813rem;
+  margin: 1.188rem 1.415% 0 0;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+}
+
+.input-book::placeholder {
+  width: 4.33rem;
+  height: 1.188rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+  color: #c4c4c4;
+}
+
+.category-input {
+  width: 23.75%;
+  height: 2.813rem;
+  margin: 1.188rem 1.415% 0;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+}
+
+.btn-book {
+  width: 15.33%;
+  height: 2.813rem;
+  margin: 1.188rem 0 0 1.415%;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+}
+
+.btn-title {
+  width: 8.16rem;
+  height: 1.125rem;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 0.813rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
+}
+
+.category-page { height: 10vh; }
+
+.construction-message {
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 200px;
+}
+
+.construction-message h2 {
+  color: rgb(81, 82, 85);
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.construction-message p {
+  color: rgb(81, 82, 86);
+}
+
+.full-progress {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #307bbe;
+  border-left-color: #f5f6fa;
+  border-image-slice: 1;
+  border-radius: 50%;
+  margin-right: 1.2rem;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 5rem;
+}
+
+.text-progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.progress-value {
+  width: 2.68rem;
+  height: 2.438rem;
+  margin: 0.063rem 6.44rem 0 0.628rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 2rem;
+  color: #121212;
+}
+
+.text-progress span {
+  width: 4.565rem;
+  height: 1.125rem;
+  margin: 0.438rem 4.5rem 0.75rem 0.68475rem;
+  opacity: 0.5;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.875rem;
+  color: #121212;
+}
+
+.progress-details {
+  display: flex;
+  flex-direction: column;
+  width: 10.5rem;
+  margin-right: 8.38rem;
+}
+
+.current-chapter {
+  height: 1.125rem;
+  margin: 0.063rem 0 0 0;
+  opacity: 0.5;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  color: #121212;
+}
+
+.current-chapter-number {
+  height: 1.313rem;
+  margin: 0.438rem 0 0.25rem 0;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: -0.4px;
+  color: #121212;
+}
+
+.btn-progress {
+  width: 11.5rem;
+  height: 2.063rem;
+  margin: 0.75rem 1.75rem 0.563rem 0;
+  padding: 0.438rem 1.188rem 0.5rem 1.375rem;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+}
+
+.btn-progress-name {
+  width: 8rem;
+  height: 1.125rem;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
+}
+
+.seperator {
+  /* width: 0.125rem;
+  height: 1.5rem; */
+  margin: 0 0 0 0.938rem;
+  color: #e8e8e8;
+
+  /* border: solid 1px #e8e8e8; */
+}

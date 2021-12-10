@@ -3,8 +3,9 @@ import BooksList from './BooksList';
 import AddBook from './Form';
 
 const Books = () => (
-  <div>
+  <div className="books-data">
     <BooksList />
+    <hr />
     <AddBook />
   </div>
 );
