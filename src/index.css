@@ -305,7 +305,7 @@ hr {
   border: none;
 }
 
-.btn-progress-name{
+.btn-progress-name {
   width: 8rem;
   height: 1.125rem;
   font-family: RobotoSlab, sans-serif;
@@ -320,9 +320,10 @@ hr {
 }
 
 .seperator {
-  /*width: 0.125rem;
-  height: 1.5rem;*/
+  /* width: 0.125rem;
+  height: 1.5rem; */
   margin: 0 0 0 0.938rem;
   color: #e8e8e8;
-  /*border: solid 1px #e8e8e8;*/
+
+  /* border: solid 1px #e8e8e8; */
 }
